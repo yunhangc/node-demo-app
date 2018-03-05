@@ -1,9 +1,14 @@
-apiVersion: extensions/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-app
+  name: demo-app-deployment
+  labels:
+    app: demo-app
 spec:
   replicas: 2
+  selector:
+    matchLabels:
+      app: demo-app
   template:
     metadata:
       labels:
@@ -13,8 +18,7 @@ spec:
       - name: demo-app
         image: in4it/node-demo-app:latest
         ports:
-        - name: demo-app-port
-          containerPort: 3000
+        - containerPort: 3000
         livenessProbe:
           httpGet:
             path: /
@@ -28,9 +32,9 @@ metadata:
   name: demo-app-service
 spec:
   ports:
-  - port: 31001
-    nodePort: 31001
-    targetPort: nodejs-port
+  - nodePort: 31001
+    targetPort: 3000
+    port: 3000
     protocol: TCP
   selector:
     app: demo-app
