@@ -22,7 +22,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: demo-app-port
+            port: 3000
           initialDelaySeconds: 15
           timeoutSeconds: 30
 ---
@@ -39,4 +39,3 @@ spec:
   selector:
     app: demo-app
   type: NodePort
-
