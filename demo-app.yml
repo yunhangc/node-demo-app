@@ -40,4 +40,3 @@ spec:
     app: demo-app
   type: NodePort
 
-# trigger commit 2
