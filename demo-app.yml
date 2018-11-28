@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: demo-app
-        image: index.docker.io/in4it/node-demo-app
+        image: yunhangc/node-app:latest
         ports:
         - containerPort: 3000
         livenessProbe:
